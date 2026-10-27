@@ -1,1 +1,24 @@
-
+<!-- Hero Video Background Component -->
+<header class="hero-video-header">
+  <div id="video-container">
+    <!-- YouTube iframe - Change video ID in the src URL -->
+    <iframe 
+      src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1&mute=1&controls=0&loop=1&playlist=YOUR_VIDEO_ID&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen
+    ></iframe>
+    <!-- Transparent overlay -->
+    <div id="transparent-overlay"></div>
+  </div>
+  <div id="black-overlay"></div>
+  <div class="content-container">
+    <div id="cta-container">
+      <!-- Call to action button - Change href to update button link -->
+      <a href="/your-link-here/" id="cta-button" class="cta-button">
+        <!-- Button icon - Change class to use a different Font Awesome icon -->
+        <i class="fas fa-shopping-cart cta-icon"></i>YOUR TEXT
+      </a>
+    </div>
+  </div>
+</header>
