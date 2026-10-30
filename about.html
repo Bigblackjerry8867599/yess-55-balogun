@@ -27,10 +27,9 @@
             --grey-strip: #2e2e2e;
             --brand-red: #c8102e;
 
-            /* NEW — charcoal moss palette for the brand strip */
-            --moss-light: #464d3f;
-            --moss: #3b4136;
-            --moss-dark: #2e342a;
+            --plum: #32174D;
+            --plum-lift: #3d1d5c;
+            --plum-deep: #240f39;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -75,7 +74,6 @@
             position: relative;
         }
 
-        /* ===== ROLLING WORD TICKER ===== */
         .nav-ticker {
             margin-right: auto;
             overflow: hidden;
@@ -202,7 +200,6 @@
             #nav-links a { white-space: nowrap; }
         }
 
-        /* Legacy navbar */
         .navbar {
             background-color: var(--light);
             padding: 15px 0;
@@ -321,20 +318,19 @@
         }
 
         /* ============================================================
-           BRAND TRIANGLE — "MEALCARTER" × 5, inverted pyramid
-           Playfair Display · Italic · 500
-           Charcoal-moss background · white lettering
-           Row 3 is crowned by a Sydney Harbour Bridge–style arch.
+           BRAND STRIP — single MEALCARTER crowned by a
+           Sydney Harbour Bridge–style arch, with the tagline
+           "ideas connecting people" beneath it.
            ============================================================ */
         .hero-brand-strip {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: clamp(30px, 4.8vw, 54px) 16px clamp(34px, 5.2vw, 62px);
+            padding: clamp(34px, 5.4vw, 62px) 16px clamp(38px, 5.8vw, 68px);
             background:
-                radial-gradient(ellipse 70% 62% at 50% 0%, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0) 62%),
+                radial-gradient(ellipse 70% 62% at 50% 0%, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0) 62%),
                 radial-gradient(ellipse 92% 74% at 50% 116%, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 70%),
-                linear-gradient(180deg, var(--moss-light) 0%, var(--moss) 46%, var(--moss-dark) 100%);
+                linear-gradient(180deg, var(--plum-lift) 0%, var(--plum) 48%, var(--plum-deep) 100%);
             border-bottom: 1px solid rgba(255, 255, 255, 0.10);
             position: relative;
             overflow: hidden;
@@ -349,7 +345,7 @@
             transform: translateX(-50%);
             width: 140px;
             height: 1px;
-            background: rgba(255, 255, 255, 0.32);
+            background: rgba(255, 255, 255, 0.34);
             opacity: 1;
         }
 
@@ -372,44 +368,6 @@
             white-space: nowrap;
         }
 
-        /* ---- GHOST WATERMARK ROWS ---- */
-        .bt-r1,
-        .bt-r2,
-        .bt-r4,
-        .bt-r5 {
-            color: transparent;
-            -webkit-text-stroke: 1.4px rgba(255, 255, 255, 0.52);
-            text-stroke: 1.4px rgba(255, 255, 255, 0.52);
-            text-shadow: none;
-            opacity: 0.9;
-            pointer-events: none;
-            user-select: none;
-        }
-
-        .bt-r1 {
-            font-size: clamp(2.4rem, 8.6vw, 6.4rem);
-            letter-spacing: 0.04em;
-        }
-
-        .bt-r2 {
-            font-size: clamp(2.05rem, 7.3vw, 5.4rem);
-            letter-spacing: 0.075em;
-        }
-
-        .bt-r4 {
-            font-size: clamp(1.35rem, 4.8vw, 3.4rem);
-            letter-spacing: 0.16em;
-        }
-
-        .bt-r5 {
-            font-size: clamp(1.02rem, 3.7vw, 2.5rem);
-            letter-spacing: 0.22em;
-            opacity: 0.74;
-            -webkit-text-stroke: 1.1px rgba(255, 255, 255, 0.46);
-            text-stroke: 1.1px rgba(255, 255, 255, 0.46);
-        }
-
-        /* ---- THE CROWNED WORDMARK ---- */
         .brand-arch {
             position: relative;
             display: block;
@@ -417,7 +375,8 @@
             max-width: 100%;
             margin: 0 auto;
             font-size: clamp(1.7rem, 6.0vw, 4.4rem);
-            padding-top: 1.5em;   /* reserved space for the bridge arch */
+            padding-top: 1.5em;
+            text-align: center;
         }
 
         .brand-arch .arch-svg {
@@ -431,7 +390,7 @@
             pointer-events: none;
             user-select: none;
             z-index: 1;
-            filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.28));
+            filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.30));
         }
 
         .bt-r3 {
@@ -444,31 +403,79 @@
             -webkit-text-stroke: 0;
             text-stroke: 0;
             text-shadow:
-                0 0 30px rgba(255, 255, 255, 0.28),
+                0 0 30px rgba(255, 255, 255, 0.30),
                 0 2px 0 rgba(0, 0, 0, 0.30);
+        }
+
+        /* Specificity bumped to beat .brand-triangle span */
+        .brand-triangle .brand-tagline {
+            display: block;
+            position: relative;
+            z-index: 2;
+            margin-top: 0.62em;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 400;
+            font-size: clamp(0.85rem, 2.1vw, 1.32rem);
+            letter-spacing: 0.09em;
+            line-height: 1.25;
+            text-transform: none;
+            color: rgba(255, 255, 255, 0.90);
+            white-space: normal;
+        }
+
+        /* ---- Arch draw-in & shimmer animation ---- */
+        .brand-arch.arch-anim-ready .arch-top,
+        .brand-arch.arch-anim-ready .arch-deck {
+            stroke-dasharray: 1;
+            stroke-dashoffset: 1;
+            transition: stroke-dashoffset 0.85s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        .brand-arch.arch-anim-ready .arch-hangers line {
+            opacity: 0;
+            transition: opacity 0.30s ease;
+            transition-delay: calc(0.85s + var(--i, 0) * 0.045s);
+        }
+
+        .brand-arch.arch-anim-ready .arch-braces line {
+            opacity: 0;
+            transition: opacity 0.42s ease 1.15s;
+        }
+
+        .brand-arch.arch-anim-ready .brand-tagline {
+            opacity: 0;
+            transform: translateY(4px);
+            transition: opacity 0.45s ease 1.20s, transform 0.45s ease 1.20s;
+        }
+
+        .brand-arch.arch-anim-live .arch-top,
+        .brand-arch.arch-anim-live .arch-deck {
+            stroke-dashoffset: 0;
+        }
+
+        .brand-arch.arch-anim-live .arch-hangers line,
+        .brand-arch.arch-anim-live .arch-braces line {
+            opacity: 1;
+        }
+
+        .brand-arch.arch-anim-live .brand-tagline {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         @media (max-width: 640px) {
             .brand-triangle { line-height: 0.84; }
             .hero-brand-strip::before { width: 90px; }
 
-            .bt-r1,
-            .bt-r2,
-            .bt-r4,
-            .bt-r5 {
-                -webkit-text-stroke: 0.9px rgba(255, 255, 255, 0.50);
-                text-stroke: 0.9px rgba(255, 255, 255, 0.50);
-                opacity: 0.86;
-            }
-
-            .bt-r5 {
-                -webkit-text-stroke: 0.8px rgba(255, 255, 255, 0.42);
-                text-stroke: 0.8px rgba(255, 255, 255, 0.42);
-                opacity: 0.7;
-            }
-
             .brand-arch { padding-top: 1.42em; }
             .brand-arch .arch-svg { height: 1.34em; width: 122%; }
+
+            .brand-triangle .brand-tagline {
+                font-size: clamp(0.78rem, 3.4vw, 1.02rem);
+                letter-spacing: 0.06em;
+                margin-top: 0.7em;
+            }
         }
 
         /* ===== MAGAZINE PASSAGE ===== */
@@ -678,7 +685,7 @@
         }
 
         /* ============================================
-           SOLUTIONS — ENCASED IN AN OVAL CARD (TEAL)
+           SOLUTIONS — OVAL CARD
            ============================================ */
         .solutions-overview {
             padding: 90px 24px 110px;
@@ -898,7 +905,6 @@
         }
         .feature-card h3 { color: #ffffff; margin-bottom: 15px; }
 
-        /* Platform Features */
         .platform-features { padding: 100px 0; background-color: var(--light); }
 
         .features-container {
@@ -917,7 +923,6 @@
         .feature-item:hover { transform: translateY(-5px); }
         .feature-icon { font-size: 3rem; color: #ffffff; margin-bottom: 25px; }
 
-        /* Testimonials */
         .testimonials { padding: 100px 0; background: var(--light); }
 
         .testimonial-container {
@@ -955,7 +960,6 @@
         .author-info h4 { margin-bottom: 5px; }
         .author-info p { font-size: 0.9rem; color: #ffffff; }
 
-        /* CTA */
         .cta {
             padding: 120px 0;
             background: var(--light);
@@ -984,7 +988,6 @@
         .btn-outline-light { background-color: transparent; border: 2px solid white; color: white; }
         .btn-outline-light:hover { background-color: black; color: #ffffff; transform: translateY(-3px); }
 
-        /* Footer */
         footer {
             background-color: var(--dark);
             color: rgba(255, 255, 255, 0.7);
@@ -1061,11 +1064,8 @@
 </head>
 <body>
 
-    <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
-
-            <!-- ===== ROLLING WORD TICKER ===== -->
             <div class="nav-ticker" aria-hidden="true">
                 <div class="nav-ticker-track">
                     <span>Connecting Data</span>
@@ -1102,10 +1102,8 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
 
-        <!-- Banner -->
         <div class="hero-banner" aria-label="Mealcarta invitation banner">
             <div class="hero-banner-inner">
                 <div class="hero-banner-columns">
@@ -1119,7 +1117,6 @@
             </div>
         </div>
 
-        <!-- Landscape image strip -->
         <div class="hero-landscape">
             <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=1800&h=700&q=80"
                  alt="A long communal table set for a shared meal"
@@ -1127,20 +1124,10 @@
                  decoding="async">
         </div>
 
-        <!-- ============================================================
-             BRAND TRIANGLE — "MEALCARTER" × 5
-             Charcoal moss ground · white Playfair italic lettering
-             Row 3 crowned by a Sydney Harbour Bridge–style arch
-             ============================================================ -->
-        <div class="hero-brand-strip" aria-label="Mealcarter brand">
-            <div class="brand-triangle" role="img" aria-label="Mealcarter">
-
-                <span class="bt-r1" aria-hidden="true">MEALCARTER</span>
-                <span class="bt-r2" aria-hidden="true">MEALCARTER</span>
+        <div class="hero-brand-strip" aria-label="Mealcarter — ideas connecting people">
+            <div class="brand-triangle" role="img" aria-label="Mealcarter — ideas connecting people">
 
                 <div class="brand-arch">
-                    <!-- Sydney Harbour Bridge arch: top chord, deck chord,
-                         vertical hangers and diagonal truss bracing -->
                     <svg class="arch-svg"
                          viewBox="0 0 1000 200"
                          preserveAspectRatio="none"
@@ -1148,29 +1135,29 @@
                          focusable="false">
                         <g fill="none" stroke-linecap="round" stroke-linejoin="round">
 
-                            <!-- deck / bottom chord -->
-                            <line x1="24" y1="190" x2="976" y2="190"
+                            <line class="arch-deck"
+                                  pathLength="1"
+                                  x1="24" y1="190" x2="976" y2="190"
                                   stroke="rgba(255,255,255,0.55)" stroke-width="4"/>
 
-                            <!-- main arch / top chord -->
-                            <path d="M 24 190 Q 500 -150 976 190"
+                            <path class="arch-top"
+                                  pathLength="1"
+                                  d="M 24 190 Q 500 -150 976 190"
                                   stroke="rgba(255,255,255,0.95)" stroke-width="7"/>
 
-                            <!-- vertical hangers -->
-                            <g stroke="rgba(255,255,255,0.58)" stroke-width="2.4">
-                                <line x1="110" y1="134" x2="110" y2="190"/>
-                                <line x1="210" y1="83"  x2="210" y2="190"/>
-                                <line x1="310" y1="47"  x2="310" y2="190"/>
-                                <line x1="410" y1="26"  x2="410" y2="190"/>
-                                <line x1="500" y1="20"  x2="500" y2="190"/>
-                                <line x1="590" y1="26"  x2="590" y2="190"/>
-                                <line x1="690" y1="47"  x2="690" y2="190"/>
-                                <line x1="790" y1="83"  x2="790" y2="190"/>
-                                <line x1="890" y1="134" x2="890" y2="190"/>
+                            <g class="arch-hangers" stroke="rgba(255,255,255,0.58)" stroke-width="2.4">
+                                <line style="--i:0" x1="110" y1="134" x2="110" y2="190"/>
+                                <line style="--i:1" x1="210" y1="83"  x2="210" y2="190"/>
+                                <line style="--i:2" x1="310" y1="47"  x2="310" y2="190"/>
+                                <line style="--i:3" x1="410" y1="26"  x2="410" y2="190"/>
+                                <line style="--i:4" x1="500" y1="20"  x2="500" y2="190"/>
+                                <line style="--i:5" x1="590" y1="26"  x2="590" y2="190"/>
+                                <line style="--i:6" x1="690" y1="47"  x2="690" y2="190"/>
+                                <line style="--i:7" x1="790" y1="83"  x2="790" y2="190"/>
+                                <line style="--i:8" x1="890" y1="134" x2="890" y2="190"/>
                             </g>
 
-                            <!-- diagonal truss bracing -->
-                            <g stroke="rgba(255,255,255,0.30)" stroke-width="1.8">
+                            <g class="arch-braces" stroke="rgba(255,255,255,0.30)" stroke-width="1.8">
                                 <line x1="110" y1="134" x2="210" y2="190"/>
                                 <line x1="210" y1="83"  x2="110" y2="190"/>
                                 <line x1="210" y1="83"  x2="310" y2="190"/>
@@ -1192,15 +1179,12 @@
                     </svg>
 
                     <span class="bt-r3" aria-hidden="true">MEALCARTER</span>
+                    <span class="brand-tagline" aria-hidden="true">ideas connecting people</span>
                 </div>
-
-                <span class="bt-r4" aria-hidden="true">MEALCARTER</span>
-                <span class="bt-r5" aria-hidden="true">MEALCARTER</span>
 
             </div>
         </div>
 
-        <!-- Magazine passage -->
         <div class="hero-magazine" aria-label="A note from the Mealcarta editors">
             <div class="hero-magazine-inner">
                 <p class="mag-kicker">Issue No. 01 · The Table</p>
@@ -1214,7 +1198,6 @@
             </div>
         </div>
 
-        <!-- Hero content: cards LEFT, image RIGHT -->
         <div class="hero-inner">
             <div class="hero-left">
                 <div class="hero-cards-viewport" aria-label="Mealcarta hero highlights — swipe horizontally to explore">
@@ -1248,9 +1231,6 @@
         </div>
     </section>
 
-    <!-- ============================================================
-         SOLUTIONS OVERVIEW — ENCASED IN AN OVAL CARD (TEAL)
-         ============================================================ -->
     <section class="solutions-overview">
         <div class="solutions-oval">
 
@@ -1320,7 +1300,6 @@
         </div>
     </section>
 
-    <!-- Testimonials -->
     <section class="testimonials">
         <div class="container">
             <div class="section-title">
@@ -1377,7 +1356,6 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
     <section class="cta">
         <div class="container">
             <h2>Ready to Transform Your Community Experience?</h2>
@@ -1389,7 +1367,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div style="margin: 20px auto; max-width: 1200px; text-align: center;">
             <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-bottom: 30px;">
@@ -1465,6 +1442,34 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+
+            /* ---------- Arch draw-in + shimmer (once) ---------- */
+            (function initArchAnimation() {
+                const archEl = document.querySelector('.brand-arch');
+                if (!archEl) return;
+
+                const reduceMotion = window.matchMedia &&
+                                     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+                // No JS-driven animation if reduced motion is preferred or IO isn't supported.
+                if (reduceMotion || !('IntersectionObserver' in window)) return;
+
+                // Hide the strokes immediately so nothing flashes before the observer fires.
+                archEl.classList.add('arch-anim-ready');
+
+                const io = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            archEl.classList.add('arch-anim-live');
+                            io.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.35 });
+
+                io.observe(archEl);
+            })();
+
+            /* ---------- Tabs ---------- */
             const tabBtns = document.querySelectorAll('.tab-btn');
 
             tabBtns.forEach(btn => {
@@ -1479,6 +1484,7 @@
                 });
             });
 
+            /* ---------- Legacy navbar scroll ---------- */
             window.addEventListener('scroll', function() {
                 const navbar = document.querySelector('.navbar');
                 if (!navbar) return;
@@ -1489,6 +1495,7 @@
                 }
             });
 
+            /* ---------- Intersection reveal for cards ---------- */
             const observerOptions = { threshold: 0.1 };
 
             const observer = new IntersectionObserver((entries) => {
@@ -1523,4 +1530,4 @@
         });
     </script>
 </body>
-  </html>
+            </html>
