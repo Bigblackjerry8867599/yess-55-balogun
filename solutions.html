@@ -344,21 +344,21 @@
             display: none !important;
         }
 
-        /* ===== HERO BUTTONS — one compact silver pill, two equal halves ===== */
+        /* ===== HERO BUTTONS — slim silver pill, two equal halves ===== */
         .hero-btns {
             display: flex;
             align-items: stretch;
             gap: 0;
-            margin: 8px 0 16px calc(5% + 20px);
-            /* halved from 460px, then trimmed a little */
+            margin: 8px 0 12px calc(5% + 20px);
+            /* halved width, trimmed length */
             width: 50%;
-            max-width: 220px;
-            min-width: 196px;
+            max-width: 210px;
+            min-width: 186px;
             border: 1.5px solid rgba(200, 205, 212, 0.7);
             border-radius: 999px;
             overflow: hidden;
             box-sizing: border-box;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
         }
 
         .hero-btns .btn {
@@ -368,12 +368,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 8px 7px;
+            padding: 5px 6px;      /* slimmed down */
             border: none;
             border-radius: 0;
-            font-size: 0.76rem;
-            line-height: 1.25;
-            letter-spacing: 0.05em;
+            font-size: 0.7rem;     /* smaller type to fit slimmer pill */
+            line-height: 1.15;     /* tightens the pill */
+            letter-spacing: 0.04em;
             text-align: center;
             white-space: normal;
             box-shadow: none;
@@ -436,7 +436,7 @@
         }
         html.light-mode .hero-btns {
             border-color: rgba(0, 0, 0, 0.42);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
         }
         html.light-mode .hero-btns .btn-primary {
             background-image: linear-gradient(135deg, #70757c 0%, #4d5157 52%, #36393e 100%);
@@ -520,8 +520,8 @@
             }
 
             .hero-btns {
-                margin: 8px 20px 20px;
-                width: 220px;
+                margin: 8px 20px 16px;
+                width: 200px;
                 max-width: calc(100% - 40px);
             }
         }
@@ -534,14 +534,14 @@
             .hero-btns {
                 flex-direction: row;   /* keep the pill intact */
                 gap: 0;
-                width: 210px;
+                width: 190px;
                 max-width: calc(100% - 40px);
             }
             .hero-btns .btn {
                 width: 50%;
-                padding: 8px 5px;
-                font-size: 0.7rem;
-                letter-spacing: 0.03em;
+                padding: 5px 4px;
+                font-size: 0.64rem;
+                letter-spacing: 0.02em;
                 white-space: normal;
             }
         }
@@ -1648,4 +1648,4 @@
         });
     </script>
 </body>
-    </html>
+                        </html>
