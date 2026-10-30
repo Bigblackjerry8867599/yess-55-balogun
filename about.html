@@ -317,7 +317,8 @@
 
         /* ============================================================
            BRAND TRIANGLE — "MEALCARTER" × 5, inverted pyramid
-           Row 3 is the hero; the others are ghosted watermarks.
+           Row 3 = the single prominent wordmark.
+           Rows 1, 2, 4, 5 = MORE PRONOUNCED ghost watermarks
            ============================================================ */
         .hero-brand-strip {
             display: flex;
@@ -361,16 +362,16 @@
             white-space: nowrap;
         }
 
-        /* ---- ROWS 1, 2, 4, 5 → watermarks (no fill, ghost outline) ---- */
+        /* ---- ROWS 1, 2, 4, 5 → stronger ghost watermarks ---- */
         .brand-triangle span:nth-child(1),
         .brand-triangle span:nth-child(2),
         .brand-triangle span:nth-child(4),
         .brand-triangle span:nth-child(5) {
             color: transparent;
-            -webkit-text-stroke: 1px rgba(200, 16, 46, 0.22);
-            text-stroke: 1px rgba(200, 16, 46, 0.22);
+            -webkit-text-stroke: 1.4px rgba(200, 16, 46, 0.52);
+            text-stroke: 1.4px rgba(200, 16, 46, 0.52);
             text-shadow: none;
-            opacity: 0.55;
+            opacity: 0.82;
             pointer-events: none;
             user-select: none;
         }
@@ -412,23 +413,33 @@
             letter-spacing: 0.16em;
         }
 
-        /* row 5 — narrowest, faintest watermark */
+        /* row 5 — narrowest, still more visible than before */
         .brand-triangle span:nth-child(5) {
             font-size: clamp(1.02rem, 3.7vw, 2.5rem);
             font-weight: 500;
             letter-spacing: 0.22em;
-            opacity: 0.4;
+            opacity: 0.68;
+            -webkit-text-stroke: 1.1px rgba(200, 16, 46, 0.45);
+            text-stroke: 1.1px rgba(200, 16, 46, 0.45);
         }
 
         @media (max-width: 640px) {
             .brand-triangle { line-height: 0.84; }
             .hero-brand-strip::before { width: 90px; }
+
             .brand-triangle span:nth-child(1),
             .brand-triangle span:nth-child(2),
             .brand-triangle span:nth-child(4),
             .brand-triangle span:nth-child(5) {
-                -webkit-text-stroke: 0.6px rgba(200, 16, 46, 0.22);
-                text-stroke: 0.6px rgba(200, 16, 46, 0.22);
+                -webkit-text-stroke: 0.9px rgba(200, 16, 46, 0.48);
+                text-stroke: 0.9px rgba(200, 16, 46, 0.48);
+                opacity: 0.78;
+            }
+
+            .brand-triangle span:nth-child(5) {
+                -webkit-text-stroke: 0.8px rgba(200, 16, 46, 0.42);
+                text-stroke: 0.8px rgba(200, 16, 46, 0.42);
+                opacity: 0.64;
             }
         }
 
@@ -1091,7 +1102,7 @@
         <!-- ============================================================
              BRAND TRIANGLE — "MEALCARTER" × 5, inverted pyramid
              Row 3 = the single prominent wordmark.
-             Rows 1, 2, 4, 5 = ghosted watermarks.
+             Rows 1, 2, 4, 5 = MORE PRONOUNCED ghost watermarks
              ============================================================ -->
         <div class="hero-brand-strip" aria-label="Mealcarter brand">
             <div class="brand-triangle" role="img" aria-label="Mealcarter">
